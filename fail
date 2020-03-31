@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(int ac, char *av[])
+{
+setlocale(LC_ALL, "ru");
+char* name1, * name2;
+if (ac > 1) {
+name1 = av[1];
+name2 = av[2];
+}
+else {
+cout « "Не заданы имена файлов\n";
+return 1;
+}
+
+ifstream f1(name1);
+double m, max;
+max = 0;
+while (!f1.eof())
+{
+f1 » m;
+if (m > max)
+{
+max = m;
+}
+
+}
+ofstream f2(name2);
+f2 « max;
+
+f1.close();
+f2.close();
+return 0;
+}
